@@ -1,0 +1,30 @@
+/* JobOffersList.css */
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .search-input,
+  .experience-input {
+    margin: 0 10px;
+    width: 250px; /* Adjust width as needed */
+  }
+  
+  .search-input .MuiOutlinedInput-root,
+  .experience-input .MuiOutlinedInput-root {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .search-input .MuiOutlinedInput-root:hover,
+  .experience-input .MuiOutlinedInput-root:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .search-input .MuiOutlinedInput-root.Mui-focused,
+  .experience-input .MuiOutlinedInput-root.Mui-focused {
+    background-color: white;
+    border-color: #77b300; /* Focus border color */
+  }
