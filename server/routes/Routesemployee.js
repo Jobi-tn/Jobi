@@ -1,10 +1,7 @@
 const express = require('express');
-const { createEmployee, Login, checkEmail } = require('../controllers/Controlleremployee');
-
 const router = express.Router();
+const employeeController = require('../controllers/employeeController');
 
-router.post('/signup', createEmployee);
-router.post('/login', Login);
-router.post('/checkemail', checkEmail); 
+router.post('/signup', employeeController.signupEmployee);
 
 module.exports = router;

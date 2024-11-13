@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-import Login from './components/Login';
-import Signup from './components/Signup';
+// App.js
+import React from 'react';
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
-
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-  };
-
-  return (
-    <div>
-      <h1>Bienvenue sur notre application</h1>
-      {isLogin ? <Login onSwitchToSignup={toggleForm} /> : <Signup onSwitchToLogin={toggleForm} />}
-    </div>
-  );
+    return (
+        <div>
+            <h1>Welcome to Jobi</h1>
+            <Login />
+            <Signup />
+        </div>
+    );
 }
 
 export default App;
