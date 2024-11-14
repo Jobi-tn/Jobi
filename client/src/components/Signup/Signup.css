@@ -1,0 +1,66 @@
+/* Styles for the signup page, reusing login page styles */
+.signup-page {
+    display: flex;
+    height: 100vh;
+    background-image: url('../../../public/Présentation\ Entreprise\ Marketing\ Minimaliste\ Moderne\ Beige\ Coloré.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.signup-left, .signup-right {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.card input {
+    width: 100%;
+    padding: 0.9rem; /* Taille du padding */
+    margin: 0.7rem 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+    box-sizing: border-box; /* Ajout de box-sizing */
+}
+
+
+.card button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #77b300; /* Specific green color */
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.card button:hover {
+    background-color: #5e8c00;
+}

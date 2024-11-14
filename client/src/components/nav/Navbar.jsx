@@ -1,10 +1,16 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography, InputBase } from '@mui/material';
-import { Search as SearchIcon, Home as HomeIcon, Work as WorkIcon, AccountCircle } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
-import './Navbar.css'
+import { AppBar, Toolbar, IconButton, Typography, Button } from '@mui/material';
+import { Home as HomeIcon, Work as WorkIcon, AccountCircle } from '@mui/icons-material';
+import { Link, useLocation } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = () => {
+  const location = useLocation(); 
+
+  const isOnPosts = location.pathname === '/posts';
+  const buttonText = isOnPosts ? 'Create Post' : 'Create Job Offer';
+  const buttonLink = isOnPosts ? '/create' : '/create-job';
+
   return (
     <AppBar position="static" className='appbarCss'>
       <Toolbar>
@@ -17,16 +23,14 @@ const Navbar = () => {
         <Typography variant="h6" style={{ flexGrow: 1 }}>
           Job Portal
         </Typography>
-        <div style={{ position: 'relative', marginRight: '20px' }}>
-          <InputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-            style={{ color: 'black', padding: '0 10px', backgroundColor: 'rgba(255, 255, 255, 0.15)', borderRadius: '4px' }}
-          />
-          <IconButton type="submit" style={{ position: 'absolute', right: 0, top: 0 }}>
-            <SearchIcon style={{ color: 'white' }} />
-          </IconButton>
-        </div>
+        <Button 
+          component={Link} 
+          to={buttonLink} 
+          variant="contained" 
+          style={{ marginLeft: '10px', backgroundColor: '#77b300' }} // Updated color
+        >
+          {buttonText} 
+        </Button>
         <IconButton color="inherit">
           <AccountCircle />
         </IconButton>

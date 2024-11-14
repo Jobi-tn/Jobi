@@ -1,18 +1,26 @@
-import React, { useState } from 'react'; 
-import { Card, CardContent, Typography, Grid, Button } from '@mui/material';
-
-const dummyPosts = [
-  { id: 1, title: 'Post 1', description: 'Description for Post 1' },
-  { id: 2, title: 'Post 2', description: 'Description for Post 2' },
-];
+import React, { useState, useEffect } from 'react'; 
+import axios from 'axios'; 
+import { Card, CardContent, Typography, Grid, Button } from '@mui/material'; 
+import { Link } from 'react-router-dom';
 
 const PostList = () => {
-  const [comments, setComments] = useState({}); // State to hold comments for each post
+  const [posts, setPosts] = useState([]); 
+  const [comments, setComments] = useState({}); 
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/posts/getall') 
+      .then(response => {
+        setPosts(response.data); 
+      })
+      .catch(error => {
+        console.error('Error fetching posts:', error);
+      });
+  }, []); 
 
   const handleCommentChange = (postId, e) => {
     setComments({
       ...comments,
-      [postId]: e.target.value, // Update comment for the specific post
+      [postId]: e.target.value, 
     });
   };
 
@@ -20,36 +28,37 @@ const PostList = () => {
     console.log(`Comment for Post ${postId}:`, comments[postId]);
     setComments({
       ...comments,
-      [postId]: '', // Clear the comment input after submission
+      [postId]: '', 
     });
   };
 
   return (
     <Grid container spacing={2} justifyContent="center"> 
-      {dummyPosts.map(post => (
-        <Grid item key={post.id} xs={12} sm={12} md={8}> 
-          <Card style={{ margin: '20px', padding: '20px', textAlign: 'center' }}> 
+    
+      {posts.map(post => ( 
+        <Grid item key={post.idposts} xs={12} sm={12} md={8}> 
+          <Card style={{ width:'70%' ,margin: '20px', padding: '20px', textAlign: 'center',marginLeft:'105px' }}> 
             <CardContent>
               <Typography variant="h5">{post.title}</Typography>
               <Typography variant="body2">{post.description}</Typography>
             </CardContent>
           </Card>
-          {/* Comment section for each post */}
-          <Card style={{ margin: '20px', padding: '20px', textAlign: 'center' }}>
+          
+          <Card style={{width:'40%' , margin: '20px', padding: '20px', textAlign: 'center',marginLeft:'250px' }}>
             <CardContent>
               <Typography variant="h6">Leave a Comment</Typography>
               <input 
                 type="text" 
                 placeholder="Your comment here" 
-                value={comments[post.id] || ''} // Bind input value to the specific post's comment
-                onChange={(e) => handleCommentChange(post.id, e)} // Handle input change
-                style={{ width: '100%', padding: '10px', marginTop: '10px' }} 
+                value={comments[post.idposts] || ''} 
+                onChange={(e) => handleCommentChange(post.idposts, e)} 
+                style={{ width: '40%', padding: '10px', marginTop: '10px' }} 
               />
               <Button 
                 variant="contained" 
                 color="primary" 
-                onClick={() => handleCommentSubmit(post.id)}
-                style={{ marginTop: '10px' }}
+                onClick={() => handleCommentSubmit(post.idposts)}
+                style={{ marginTop: '0px' ,  backgroundColor: '#77b300'}}
               >
                 Submit
               </Button>
