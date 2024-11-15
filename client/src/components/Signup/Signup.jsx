@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import validator from 'validator';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import './Signup.css';
 
 function Signup({ isEmployee, onSignupComplete }) {
@@ -15,6 +16,7 @@ function Signup({ isEmployee, onSignupComplete }) {
     });
     const [error, setError] = useState('');
     const [emailError, setEmailError] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -69,20 +71,31 @@ function Signup({ isEmployee, onSignupComplete }) {
                 'Content-Type': 'application/json'
             }
         })
-        .then(response => {
+        .then(() => {
             Swal.fire({
                 icon: 'success',
                 title: 'Signup Successful!',
-                text: 'You can now log in.',
+                text: 'You can now create your profile.',
             });
-            onSignupComplete()
+            if (isEmployee) {
+                navigate('/employee-form'); // Redirect to EmployeeForm if signed up as employee
+            }
+            onSignupComplete();
         })
-        .catch(error => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Signup Failed',
-                text: 'An error occurred',
-            });
+        .catch((error) => {
+            if (error.response && error.response.status === 400) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Signup Failed',
+                    text: 'Email is already in use',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Signup Failed',
+                    text: 'An error occurred',
+                });
+            }
         });
     };
 

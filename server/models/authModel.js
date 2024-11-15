@@ -9,6 +9,7 @@ function createEmployee(name, lastname, email, password, callback) {
         const query = 'INSERT INTO employees (name, lastname, mail, password) VALUES (?, ?, ?, ?)';
         db.query(query, [name, lastname, email, hashedPassword], callback);
     });
+    
 }
 
 function createEmployer(nameCompany, matriculeFiscale, email, password, callback) {
