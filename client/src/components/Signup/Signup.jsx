@@ -25,7 +25,7 @@ function Signup({ isEmployee, onSignupComplete }) {
         setFormData({ ...formData, email });
 
         if (validator.isEmail(email)) {
-            setEmailError("Valid Email :)");
+            setEmailError("Valid Email");
         } else {
             setEmailError("Enter valid Email!");
         }
@@ -134,7 +134,7 @@ function Signup({ isEmployee, onSignupComplete }) {
                         value={formData.email}
                         onChange={validateEmail}
                     />
-                    <p style={{ color: emailError === "Valid Email :)" ? "green" : "red" }}>{emailError}</p>
+                    <p style={{ color: emailError === "Valid Email" ? "green" : "red" }}>{emailError}</p>
                     <input
                         type="password"
                         name="password"
