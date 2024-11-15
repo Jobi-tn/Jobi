@@ -144,6 +144,66 @@ CREATE TABLE IF NOT EXISTS `jobi`.`comments` (
 ENGINE = InnoDB;
 
 
+-- Insert data into employees table
+INSERT INTO employees (mail, password, name, lastname, pic, skills, experience, age, education, location, phone_number, rating) VALUES
+('john.doe@example.com', 'password123', 'John', 'Doe', NULL, 'JavaScript, React', 5, 30, 'Bachelor of Science', 'New York', 1234567890, 4),
+('jane.smith@example.com', 'password456', 'Jane', 'Smith', NULL, 'Python, Django', 3, 28, 'Master of Science', 'Los Angeles', 9876543210, 5);
+
+-- Insert data into employers table
+INSERT INTO employers (name, owner, matricule_fiscale, location, phone_number, description, field, email, password) VALUES
+('Tech Corp', 'Alice Johnson', 123456789, 'San Francisco', 1234567890, 'A leading tech company', 'Technology', 'contact@techcorp.com', 'employerpass'),
+('Health Inc', 'Bob Brown', 987654321, 'Chicago', 9876543210, 'Healthcare solutions provider', 'Healthcare', 'info@healthinc.com', 'employerpass');
+
+-- Insert data into joboffers table
+INSERT INTO joboffers (position, description, experience, employers_idemployers, status) VALUES
+('Frontend Developer', 'Looking for a skilled frontend developer with experience in React.', 2, 1, 1),
+('Backend Developer', 'Seeking a backend developer proficient in Node.js and Express.', 3, 1, 1),
+('Data Analyst', 'Join our team as a data analyst to help us make data-driven decisions.', 1, 2, 1);
+
+-- Insert data into posts table
+INSERT INTO posts (title, description, employees_idemployees, employers_idemployers) VALUES
+('Post about React', 'This is a post discussing the benefits of using React for web development.', 1, 1),
+('Post about Python', 'A post sharing insights on Python programming and its applications.', 2, 2);
+
+-- Insert data into applications table
+INSERT INTO applications (joboffers_idjobposts, employees_idemployees, status) VALUES
+(1, 1, 1),
+(2, 1, 0),
+(3, 2, 1);
+
+-- Insert data into comments table
+INSERT INTO comments (content, posts_idposts) VALUES
+('Great insights on React!', 1),
+('I love Python, thanks for sharing!', 2);
+
+INSERT INTO jobi.employees (mail, password, name, lastname, pic, skills, experience, age, education, location, phone_number, rating) VALUES
+('johndoe@example.com', 'password123', 'John', 'Doe', NULL, 'Java, SQL', 5, 30, 'Bachelor of Science', 'New York', 1234567890, 4),
+('janedoe@example.com', 'password123', 'Jane', 'Doe', NULL, 'Python, HTML', 3, 28, 'Master of Science', 'Los Angeles', 987654321, 5);
+
+-- Insert dummy data for employers table
+INSERT INTO jobi.employers (name, owner, matricule_fiscale, location, phone_number, description, field, email, password) VALUES
+('Tech Solutions Inc.', 'Alice Smith', 123456789, 'San Francisco', 1122334455, 'A tech company specializing in software development.', 'Technology', 'techsolutions@example.com', 'pass456'),
+('Green Gardens Ltd.', 'Bob Johnson', 987654321, 'Chicago', 5566778899, 'A landscaping and garden maintenance company.', 'Landscaping', 'greengardens@example.com', 'pass789');
+
+-- Insert dummy data for joboffers table
+INSERT INTO jobi.joboffers (position, description, experience, employers_idemployers, status) VALUES
+('Software Engineer', 'Develop and maintain software applications.', 3, 1, 1),
+('Gardener', 'Maintain and care for gardens and landscapes.', 2, 2, 1);
+-- Insert dummy data for posts table
+INSERT INTO jobi.posts (title, description, employees_idemployees, employers_idemployers) VALUES
+('Looking for a Job', 'I am a software engineer looking for a new opportunity.', 1, NULL),
+('Hiring Now!', 'We are looking for experienced gardeners.', NULL, 2);
+
+-- Insert dummy data for applications table
+INSERT INTO jobi.applications (joboffers_idjobposts, employees_idemployees, status) VALUES
+(1, 1, 1),
+(2, 2, 0);
+
+-- Insert dummy data for comments table
+INSERT INTO jobi.comments (content, posts_idposts) VALUES
+('This sounds like a great job opportunity!', 1),
+('We are very interested in your profile.', 2);
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

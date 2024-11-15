@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,60 +39,4 @@
 
 .read-the-docs {
   color: #888;
-}
-
-.form-container {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 2px 3px rgba(0,0,0,0.2);
-  padding: 24px;
-  max-width: 600px;
-  margin: 20px auto;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group input {
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 8px 12px;
-  width: 100%;
-  margin-bottom: 16px;
-  font-size: 14px;
-}
-
-.form-group input:focus {
-  border-color: var(--primary-color);
-  outline: none;
-  box-shadow: 0 0 0 1px var(--primary-color);
-}
-
-.employee-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.employee-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 2px 3px rgba(0,0,0,0.2);
-  padding: 20px;
-  transition: box-shadow 0.3s;
-}
-
-.employee-card:hover {
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.2);
-  transform: none;
-}
-
-.employee-card img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
 }
