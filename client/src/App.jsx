@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import PostList from './components/postlist';
+import JobOffersList from './components/job/jobofferslis'; 
+import Navbar from './components/nav/Navbar';
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
+import CreatePost from './components/CreatePost'; 
+import CreateJobOffer from './components/CreateJobOffer';
+import SingleJobOffer from './components/job/SingleJobOffer';
+import EmployeeForm from './components/EmployeeForm'; // Import EmployeeForm
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [searchParams, setSearchParams] = useState({ searchTerm: '', experience: null });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
+  const [isEmployeeSignup, setIsEmployeeSignup] = useState(true);
+
+  const handleSearch = (params) => {
+    setSearchParams(params);
+    console.log('Search Params:', params);
+  };
+
+  const handleShowSignup = (isSignup) => {
+    setIsEmployeeSignup(isSignup);
+    setShowLogin(false);
+  };
+
+  const handleShowLogin = () => {
+    setShowLogin(true);
+  };
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleSignupComplete = () => {
+    setIsAuthenticated(true); // Ensure the user is marked as authenticated after signup
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      {isAuthenticated ? (
+        <div>
+          <Navbar onSearch={handleSearch} />
+          <Routes>
+            <Route path="/posts" element={<PostList />} exact />
+            <Route path="/jobs" element={<JobOffersList searchParams={searchParams} />} exact />
+            <Route path="/jobs/:id" element={<SingleJobOffer />} exact />
+            <Route path="/create" element={<CreatePost />} exact />
+            <Route path="/create-job" element={<CreateJobOffer />} exact/>
+            <Route path="/employee-form" element={<EmployeeForm />} exact/> {/* Ensure this route is accessible */}
+          </Routes>
+        </div>
+      ) : (
+        <div>
+          {showLogin ? (
+            <Login onShowSignup={handleShowSignup} onLoginSuccess={handleLoginSuccess} />
+          ) : (
+            <Signup isEmployee={isEmployeeSignup} onSignupComplete={handleSignupComplete} />
+          )}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default App;

@@ -1,0 +1,156 @@
+/* General Layout and Background */
+.login-page {
+    display: flex;
+    height: 100vh;
+    background-image: url('../../../public/Présentation\ Entreprise\ Marketing\ Minimaliste\ Moderne\ Beige\ Coloré.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.login-left, .login-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    transition: transform 0.5s ease-in-out;
+    flex-direction: column; /* Align elements vertically */
+}
+
+.login-left {
+    background-color: rgba(0, 0, 0, 0.6); /* Darkened overlay for text visibility */
+    font-size: 1.2rem;
+    text-align: center;
+    color: #f1f1f1;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.jobi-logo {
+    max-width: 500px; /* Adjust for responsiveness */
+    height: auto;
+    margin-bottom: 20px;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.jobi-logo:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.jobi-description {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-top: 20px;
+    color: #f1f1f1;
+    padding: 0 15px;
+    font-weight: 400;
+}
+
+.login-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Card lifts slightly on hover */
+}
+
+.card h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.card input {
+    width: 100%;
+    padding: 0.9rem; /* Taille du padding */
+    margin: 0.7rem 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+    box-sizing: border-box; /* Ajout de box-sizing */
+}
+
+
+.card input:focus {
+    border-color: #77b300; /* Green focus border */
+    box-shadow: 0 0 5px rgba(119, 179, 0, 0.4); /* Focus shadow effect */
+}
+
+.card button {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #77b300;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.card button:hover {
+    background-color: #5e8c00; /* Darken on hover */
+}
+
+.other-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+}
+
+.other-buttons button {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #f2f2f2;
+    border: none;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 0.7rem;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.other-buttons button:hover {
+    background-color: #77b300;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .login-page {
+        flex-direction: column;
+    }
+
+    .login-left, .login-right {
+        flex: 0;
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .card {
+        max-width: 90%;
+    }
+}

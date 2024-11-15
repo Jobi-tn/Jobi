@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import './employeeForm.css';
+
 
 function EmployeeForm() {
   const [formData, setFormData] = useState({
