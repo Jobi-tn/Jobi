@@ -7,20 +7,21 @@ const CreateJobOffer = () => {
   const [position, setPosition] = useState('');
   const [description, setDescription] = useState('');
   const [experience, setExperience] = useState('');
-  const [status, setStatus] = useState(true); // Default to 'Open'
+  const [status, setStatus] = useState(true); 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const jobData = { position, description, experience, status };
-
+    const jobData = { position, description, experience, employers_idemployers:1, status };
+    console.log('Job Data:', jobData); 
+  
     axios.post('http://localhost:3000/jobs/create', jobData)
       .then(response => {
         console.log('Job offer created:', response.data);
-        navigate('/jobs'); // Redirect to job offers list
+        navigate('/jobs'); 
       })
       .catch(error => {
-        console.error('Error creating job offer:', error);
+        console.error('Error creating job offer:', error.response ? error.response.data : error.message);
       });
   };
 

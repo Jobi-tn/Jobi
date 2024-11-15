@@ -27,7 +27,7 @@ const Navbar = () => {
           component={Link} 
           to={buttonLink} 
           variant="contained" 
-          style={{ marginLeft: '10px', backgroundColor: '#77b300' }} // Updated color
+          style={{ marginLeft: '10px', backgroundColor: '#77b300' }}
         >
           {buttonText} 
         </Button>
