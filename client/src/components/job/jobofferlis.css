@@ -1,4 +1,3 @@
-/* JobOffersList.css */
 
 .search-container {
     display: flex;
@@ -9,7 +8,7 @@
   .search-input,
   .experience-input {
     margin: 0 10px;
-    width: 250px; /* Adjust width as needed */
+    width: 250px;
   }
   
   .search-input .MuiOutlinedInput-root,
@@ -26,5 +25,5 @@
   .search-input .MuiOutlinedInput-root.Mui-focused,
   .experience-input .MuiOutlinedInput-root.Mui-focused {
     background-color: white;
-    border-color: #77b300; /* Focus border color */
+    border-color: #77b300;
   }

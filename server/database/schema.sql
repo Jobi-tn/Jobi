@@ -176,6 +176,34 @@ INSERT INTO comments (content, posts_idposts) VALUES
 ('Great insights on React!', 1),
 ('I love Python, thanks for sharing!', 2);
 
+INSERT INTO jobi.employees (mail, password, name, lastname, pic, skills, experience, age, education, location, phone_number, rating) VALUES
+('johndoe@example.com', 'password123', 'John', 'Doe', NULL, 'Java, SQL', 5, 30, 'Bachelor of Science', 'New York', 1234567890, 4),
+('janedoe@example.com', 'password123', 'Jane', 'Doe', NULL, 'Python, HTML', 3, 28, 'Master of Science', 'Los Angeles', 987654321, 5);
+
+-- Insert dummy data for employers table
+INSERT INTO jobi.employers (name, owner, matricule_fiscale, location, phone_number, description, field, email, password) VALUES
+('Tech Solutions Inc.', 'Alice Smith', 123456789, 'San Francisco', 1122334455, 'A tech company specializing in software development.', 'Technology', 'techsolutions@example.com', 'pass456'),
+('Green Gardens Ltd.', 'Bob Johnson', 987654321, 'Chicago', 5566778899, 'A landscaping and garden maintenance company.', 'Landscaping', 'greengardens@example.com', 'pass789');
+
+-- Insert dummy data for joboffers table
+INSERT INTO jobi.joboffers (position, description, experience, employers_idemployers, status) VALUES
+('Software Engineer', 'Develop and maintain software applications.', 3, 1, 1),
+('Gardener', 'Maintain and care for gardens and landscapes.', 2, 2, 1);
+-- Insert dummy data for posts table
+INSERT INTO jobi.posts (title, description, employees_idemployees, employers_idemployers) VALUES
+('Looking for a Job', 'I am a software engineer looking for a new opportunity.', 1, NULL),
+('Hiring Now!', 'We are looking for experienced gardeners.', NULL, 2);
+
+-- Insert dummy data for applications table
+INSERT INTO jobi.applications (joboffers_idjobposts, employees_idemployees, status) VALUES
+(1, 1, 1),
+(2, 2, 0);
+
+-- Insert dummy data for comments table
+INSERT INTO jobi.comments (content, posts_idposts) VALUES
+('This sounds like a great job opportunity!', 1),
+('We are very interested in your profile.', 2);
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

@@ -15,8 +15,9 @@ module.exports = {
       if (err) {
         res.status(500).json({ error: 'Failed to create job' });
       } else {
-        res.status(201).json({ id: result.insertId, ...jobData });
+        res.status(201).json(result);
       }
     });
   },
+  
 }
